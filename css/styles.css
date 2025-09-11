@@ -17,6 +17,49 @@ h3,
     font-family: 'Playfair Display', serif;
 }
 
+.houses {
+    padding: 80px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.houses-title {
+
+    color: #000;
+    text-align: left;
+}
+
+.houses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.house-card img {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.house-card p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+}
+
+.pagination span {
+    margin: 0 8px;
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
 /* 
 header[role="banner"] {
     position: absolute;
