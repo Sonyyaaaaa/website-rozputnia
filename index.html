@@ -64,8 +64,16 @@
         <!-- ABOUT / "Тихе місце для перезавантаження" -->
         <section class="about">
             <div class="container">
-                <h2 class="section-title">Тихе місце<br>для перезавантаження</h2>
-                <p class="section-subtitle">(Переваги комплексу)</p>
+                <h2 class="section-title">
+                    <span class="line1">Тихе місце</span>
+                    <span class="line2-wrap">
+                        <span class="section-subtitle">(Переваги комплексу)</span>
+                        <span class="line2">для перезавантаження</span>
+                    </span>
+                </h2>
+
+
+
 
 
                 <table class="about-table">
@@ -120,10 +128,10 @@
                 </article>
             </div>
 
-            <!-- Пагінація (приклад) -->
+            <!-- Пагінація  -->
             <div class="pagination" aria-label="Навігація по сторінкам будинків">
                 <a href="#houses?page=1">1</a>
-                <a href="#houses?page=2">2</a>
+                <a href="#houses?page=2" class="active">2</a>
                 <a href="#houses?page=3">3</a>
             </div>
         </section>
@@ -142,7 +150,7 @@
 
         <!-- BOOKING / Форма бронювання -->
         <section id="booking" aria-labelledby="booking-title">
-            <h2 id="booking-title">Заплануй свою подорож вже сьогодні!</h2>
+            <h2 id="booking-title">Заплануй свою подорож <br> вже сьогодні!</h2>
 
             <form action="/book" method="post" aria-label="Форма бронювання">
                 <div>
@@ -155,14 +163,15 @@
                     <input id="email" name="email" type="email" required />
                 </div>
 
-                <p class="consent-note">Натискаючи кнопку, ви погоджуєтесь на обробку персональних даних.</p>
-
-                <div>
+                <!-- новий flex-блок -->
+                <div class="consent-and-button">
+                    <p class="consent-note">Натискаючи на кнопку, я погоджуюсь з <br> обробкою персональних даних</p>
                     <button type="submit">ЗАБРОНЮВАТИ</button>
                 </div>
-                <p class="consent-note">Виникли запитання? напишіть нам на info@THEFORESTHAVEN</p>
 
+                <p class="consent-note footer-note">Виникли запитання? напишіть нам на info@THEFORESTHAVEN</p>
             </form>
+
         </section>
 
     </main>
@@ -171,13 +180,17 @@
     <footer id="contacts" role="contentinfo">
         <div class="footer-top">
             <div class="footer-contacts">
-                <p>телефон: <a href="tel:+380963526984">+38 (096) 352 69 84</a></p>
-                <p>email: <a href="mailto:info@foresthaven">INFO@FORESTHAVEN</a></p>
+                <p>number: <br> <a href="tel:+380963526984">+38 (096) 352 69 84</a></p>
+                <p><br></p>
+                <p><br><a href="#" class="hello">The Forest Haven</a></p>
+
             </div>
 
             <div class="footer-social">
-                <p>social media</p>
-                <a href="#" aria-label="Instagram">Instagram</a>
+                <p>email: <br> <a href="mailto:info@foresthaven">INFO@FORESTHAVEN</a></p>
+                <p><br></p>
+                <p>social media <br> <a href="#">Instagram</a></p>
+
             </div>
         </div>
 

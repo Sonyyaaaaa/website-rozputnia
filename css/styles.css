@@ -1,269 +1,999 @@
-/*  
+/* --------------------
+   BASE STYLES
+-------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-*/
+
 body {
     font-family: 'Manrope', sans-serif;
-
+    color: #2c2c2c;
+    background-color: #fff;
+    line-height: 1.6;
 }
 
 h1,
 h2,
-h3,
-.logo {
+h3 {
     font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: #fff;
 }
 
-.houses {
-    padding: 80px 20px;
-    background: #f9f9f9;
-    text-align: center;
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.3s ease;
 }
 
-.houses-title {
-
-    color: #000;
-    text-align: left;
+a:hover {
+    opacity: 0.7;
 }
 
-.houses-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.house-card img {
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-.house-card p {
-    font-family: 'Manrope', sans-serif;
-    font-size: 14px;
-    color: #333;
-}
-
-.pagination {
-    margin-top: 30px;
-    text-align: center;
-    font-family: 'Manrope', sans-serif;
-}
-
-.pagination span {
-    margin: 0 8px;
-    cursor: pointer;
-
-    font-size: 14px;
-}
-
-/* 
-header[role="banner"] {
+/* --------------------
+   HEADER
+-------------------- */
+header {
+    background: transparent;
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    z-index: 1000;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: #fff;
 }
 
 .logo a {
-    font-size: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
     font-weight: 400;
     color: #fff;
-    text-decoration: none;
 }
 
-nav[aria-label="Головна навігація"] ul {
+nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 25px;
 }
 
-nav[aria-label="Головна навігація"] a {
-    color: #fff;
-    font-size: 14px;
-    text-decoration: none;
-    font-weight: 500;
+nav a {
+    font-weight: 400;
+    font-size: 20px;
 }
 
 .header-contacts a {
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
+    font-weight: 400;
+    font-size: 20px;
 }
 
-
+/* ===== HERO фото ===== */
 #hero {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    margin-bottom: 140px;
 }
 
-.hero-media img {
+#hero .hero-media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-
 }
 
+/* ===== HERO контент ===== */
 .hero-content {
     position: absolute;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    text-align: left;
+    inset: 0;
+    z-index: 2;
+    color: #fff;
+    /* увесь текст білий */
+}
+
+/* Заголовок зліва */
+.hero-content h1 {
+    position: absolute;
+    left: 6%;
+    top: 40%;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(144px, 8vw, 110px);
+    line-height: 1;
+    white-space: nowrap;
+    color: #fff;
+    /* білий */
+}
+
+/* (FROM 2023) над заголовком праворуч */
+.hero-content .subtitle {
+    position: absolute;
+    top: calc(40% - 20px);
+    left: 55%;
+    font-size: 19px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     color: #fff;
 }
 
-.hero-content h1 {
-    font-size: 144px;
-    font-style: italic;
-    font-weight: 400;
-    margin-bottom: 10px;
-    margin-left: -10px;
-}
-
-.hero-content .subtitle {
-    font-size: 20px;
-    margin-bottom: -10px;
-}
-
+/* Текст зліва внизу */
 .hero-content .lead {
+    position: absolute;
+    left: 6%;
+    bottom: 14%;
+    max-width: 600px;
     font-size: 20px;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-    top: 80%;
-    max-width: 565px;
-
-}
-
-.btn-book {
-    background: #fff;
-    color: #000;
-    padding: 12px 24px;
-    font-size: 20px;
-    text-decoration: none;
-    border-radius: 0;
-    font-weight: 500;
-    letter-spacing: 1px;
-}
-
-.about {
-    padding: 80px 20px;
-    background: #fff;
-    color: #000;
-    text-align: left;
-}
-
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
     font-weight: 400;
-    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.6;
+    color: #fff;
 }
 
-.section-subtitle {
-    font-family: 'Manrope', sans-serif;
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 40px;
+/* Кнопка справа внизу */
+.btn-book {
+    position: absolute;
+    right: 3%;
+    bottom: 17%;
+    display: inline-block;
+    padding: 16px 52px;
+    background: #fff;
+    color: #111;
+
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: 0.25s;
 }
 
-.benefits {
+.btn-book:hover {
+    background: #3C3126;
+    color: #fff;
+}
+
+/* --------------------
+   ABOUT
+-------------------- */
+/* ===== ABOUT SECTION ===== */
+.section-title {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.benefit {
-    text-align: left;
-}
-
-.benefit .number {
+    align-items: flex-start;
     font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.houses {
-
-    padding: 80px 20px;
-    background: #f9f9f9;
-    text-align: center;
-}
-
-.houses-title {
+    font-size: clamp(112px, 6vw, 70px);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #2d2119;
+    margin: 40px;
     margin-top: 140px;
-    color: #000;
-    text-align: left;
 }
 
+/* перший рядок */
+.section-title .line1 {
+    display: inline-block;
+}
+
+/* обгортка другого рядка */
+.section-title .line2-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: calc(100% - 11.5em);
+    /* підганяєш ширину під слово "місце" */
+}
+
+/* підпис */
+.section-subtitle {
+    position: absolute;
+    right: 120px;
+    /* вирівнюється по кінцю другого рядка */
+
+    /* над словом */
+    transform: translateY(-8px);
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #7b6454;
+}
+
+/* другий рядок */
+.section-title .line2 {
+    display: inline-block;
+}
+
+/* ===== Таблиця ===== */
+.about-table {
+    margin-top: 84px;
+    margin-bottom: 140px;
+    border-collapse: collapse;
+    width: auto;
+    /* не на всю ширину */
+    margin-left: calc(100% - 84em);
+    /* вирівнювання з другим рядком */
+}
+
+.about-table tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.about-table tr:first-child {
+    border-top: 1px solid #ccc;
+}
+
+.about-table td {
+    padding: 14px 12px;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #2d2119;
+    vertical-align: center;
+}
+
+/* Ліва колонка курсив */
+.about-table td:first-child {
+    width: 80px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 44px;
+    text-align: center;
+    color: #2d2119;
+    padding-right: 80px;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .about {
+        padding: 60px 20px;
+    }
+
+    .section-title {
+        font-size: 34px;
+        display: block;
+    }
+
+    .section-title::before,
+    .section-title::after {
+        display: block;
+        content: none;
+    }
+
+    .section-subtitle {
+        position: static;
+        text-align: center;
+        margin-bottom: 20px;
+        display: block;
+    }
+}
+
+/* --------------------
+   HOUSES
+-------------------- */
+/* ===== HOUSES SECTION ===== */
+#houses {
+    margin: 0 40px;
+    background: #fff;
+    color: #2d2119;
+}
+
+#houses-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(96px, 5vw, 60px);
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: #3a2b20;
+}
+
+/* Сітка карток */
 .houses-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 40px;
+    gap: 40px;
 }
 
 .house-card img {
     width: 100%;
-    margin-bottom: 15px;
+    height: auto;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.house-card h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #2d2119;
 }
 
 .house-card p {
     font-family: 'Manrope', sans-serif;
     font-size: 14px;
-    color: #333;
+    color: #444;
+    line-height: 1.5;
 }
 
+/* ===== PAGINATION ===== */
 .pagination {
-    margin-top: 30px;
-    text-align: center;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    /* відстань між цифрами */
     font-family: 'Manrope', sans-serif;
+    color: #2d2119;
 }
 
-.territory-table {
-    width: 50%;
-    border-collapse: collapse;
-    font-family: 'Manrope', sans-serif;
+/* Загальні стилі для цифр */
+.pagination a {
+    text-decoration: none;
+    color: #2d2119;
     font-size: 16px;
-    color: #333;
-    margin: 20px 0;
+    font-weight: 400;
+    position: relative;
+}
+
+/* Роздільні лінії */
+.pagination a:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -55px;
+    /* відстань від цифри до лінії */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 1px;
+    background: #111;
+}
+
+/* Активна цифра */
+.pagination a.active {
+    font-size: 22px;
+    /* більша цифра */
+    font-weight: 400;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 992px) {
+    .houses-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .houses-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --------------------
+   GALLERY
+-------------------- */
+#gallery {
+    margin: 40px;
+    margin-top: 140px;
+    margin-bottom: 140px;
+}
+
+.wide-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+
+    font-size: 20px;
+}
+
+/* --------------------
+   BOOKING
+-------------------- */
+#booking {
+    background: #3C3126;
+    color: #fff;
+    width: 750px;
+    margin: 0 auto;
+    margin-bottom: 140px;
+    padding: 60px 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+/* ===== BOOKING SECTION ===== */
+
+#booking-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 3vw, 32px);
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 60px;
+}
+
+/* Форма */
+#booking form {
+    max-width: 770px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 20px;
+    align-items: end;
+    text-align: left;
+}
+
+#booking label {
+    margin-left: 15px;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #ccc;
+}
+
+#booking input {
+    width: 100%;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    right: 40px;
+    border: none;
+    border-bottom: 1px solid #777;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    padding: 0;
+    outline: none;
+}
+
+#booking input::placeholder {
+    color: #aaa;
+}
+
+/* Нотатка */
+/* розташування тексту та кнопки в рядок */
+.consent-and-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: 1 / -1;
+    /* щоб тягнулося на всю ширину */
+    gap: 20px;
+}
+
+.consent-note {
+    font-size: 16px;
+    color: #ccc;
+    margin-left: 15px;
+    flex: 1;
+}
+
+/* кнопка */
+#booking button {
+    background: #fff;
+    color: #2d2119;
+    border: none;
+    margin-right: 5px;
+    padding: 14px 28px;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    flex-shrink: 0;
+    /* не зменшується */
+}
+
+#booking button:hover {
+    background: #2d2119;
+    color: #fff;
+}
+
+/* нижній сірий текст */
+.footer-note {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-top: 50px;
+}
+
+/* адаптив */
+@media (max-width: 768px) {
+    .consent-and-button {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #booking button {
+        width: 100%;
+    }
+}
+
+/* --------------------
+   FOOTER
+-------------------- */
+footer {
+    background: #3C3126;
+    color: #fff;
+    padding: 40px 40px;
+    font-size: 44px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.footer-contacts a {
+    font-size: 44px;
+}
+
+.hello {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+.footer-social a {
+    font-size: 44px;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+}
+
+
+/* ===== ABOUT SECTION ===== */
+.about-section {
+    padding: 100px 60px;
+    background: #fff;
+    color: #2d2119;
+    position: relative;
+}
+
+/* Заголовок */
+.about-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(96px, 5vw, 60px);
+    font-style: italic;
+    font-weight: 400;
+    color: #3a2b20;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Маленький підпис справа */
+.about-section h2::after {
+    content: "(Інформація про нас)";
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #111;
+    position: absolute;
+    right: 0;
+    top: 65%;
+    transform: translateY(-50%);
+}
+
+.about-section h3 {
+    font-weight: 400;
+    margin-bottom: 30px;
+    font-size: 36px;
+    /* робимо акцент */
+    line-height: 1.3;
+    color: #2d2119;
+}
+
+/* Основний текст */
+.about-section p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #444;
+    max-width: 800px;
+}
+
+
+/* виділений перший рядок */
+
+
+/* ===== Блоки ===== */
+.about-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 40px 0;
+
+}
+
+.highlight-card {
+    background: #3b2e25;
+    color: #fff;
+    width: 430px;
+    margin: 0 auto;
+
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.highlight-card h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.highlight-card p {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #ddd;
+}
+
+/* Нижній текст */
+.about-section>p:last-of-type {
+    text-align: center;
+    color: #666;
+    margin-top: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 992px) {
+    .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .about-section h2::after {
+        position: static;
+        display: block;
+        margin-top: 10px;
+        text-align: right;
+    }
+}
+
+
+/* ===== TERRITORY SECTION ===== */
+.territory {
+    padding: 100px 60px;
+    background: #fff;
+    color: #2d2119;
+    position: relative;
+}
+
+/* Заголовок */
+.territory h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(96px, 5vw, 60px);
+    font-style: italic;
+    font-weight: 400;
+    color: #3a2b20;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Маленький підпис справа */
+.territory h2::after {
+    content: "(Інформація про нас)";
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #7b6454;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Вступні абзаци */
+.territory p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 12px;
+    max-width: 550px;
+}
+
+.territory h3 {
+    font-family: 'Manrope', sans-serif;
+    color: #111;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+/* ===== Таблиця як на минулій секції ===== */
+.territory-table {
+    width: 60%;
+    /* не на всю ширину */
+    margin: 40px 0 40px auto;
+    /* вирівнюємо праворуч */
+    border-collapse: collapse;
+}
+
+.territory-table tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.territory-table tr:first-child {
+    border-top: 1px solid #ccc;
 }
 
 .territory-table td {
-    padding: 12px 15px;
-    vertical-align: top;
-    border-bottom: 1px solid #292626;
-}
-
-.territory-table tr:first-child td {
-    border-top: 1px solid #292626;
+    padding: 16px 12px;
+    font-size: 20px;
+    line-height: 1.5;
+    vertical-align: center;
+    color: #2d2119;
 }
 
 .territory-table td:first-child {
+    width: 300px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 36px;
+    color: #2d2119;
+    padding-right: 40px;
+    /* відступ від другої колонки */
+}
+
+/* ===== Фото ===== */
+.territory-image {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.territory-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.territory-image p {
+    padding-top: 40px;
+    margin: 0 auto;
+    font-size: 20px;
+    color: #444;
+
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 768px) {
+    .territory {
+        padding: 60px 20px;
+    }
+
+    .territory h2::after {
+        position: static;
+        display: block;
+        margin-top: 8px;
+        text-align: right;
+    }
+
+    .territory-table {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .territory-table td:first-child {
+        width: auto;
+        font-size: 18px;
+        padding-right: 20px;
+    }
+}
+
+/* ===== HOUSES SECTION ===== */
+.houses-section {
+    padding-top: 140px;
+
+    background: #fff;
+    color: #2d2119;
+    position: relative;
+    margin-left: 40px;
+}
+
+.houses-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 60px);
+    font-style: italic;
+    font-weight: 400;
+    color: #3a2b20;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.houses-section h2::after {
+    content: "(Інформація про будинки)";
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #7b6454;
+    position: absolute;
+    margin-right: 40px;
+    right: 0;
+    top: 60%;
+    transform: translateY(-50%);
+}
+
+.houses-section p {
+    font-size: 36px;
+    font-weight: 400;
+}
+
+/* Вступний текст */
+.houses-intro {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #2d2119;
+}
+
+.houses-features {
+    list-style-type: disc;
+    /* крапки */
+    padding-left: 30px;
+    /* відступ для маркерів */
+    margin-bottom: 50px;
+    color: #444;
+}
+
+.houses-features li {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* ===== HOUSE TYPES ===== */
+.house-type {
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.house-type h3 {
+    position: absolute;
+    left: 475px;
+    /* зсув на ширину маленького фото */
+    top: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
     font-weight: 600;
-    width: 30%;
-    color: #1a1a1a;
+    color: #2d2119;
+    margin: 0;
 }
 
-.territory-table td:nth-child(2) {
-    width: 110%;
-    color: #555;
+/* ===== HOUSE TYPES ===== */
+.house-content {
+    display: flex;
+    gap: 40px;
+    margin-left: 40px;
+    align-items: flex-start;
 }
 
-*/
+.house-images {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    /* тепер друге фото прижме вниз */
+}
+
+.house-images img:first-child {
+    width: 420px;
+    height: 460px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.house-images img:last-child {
+    width: 370px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Списки всередині описів будинків */
+.house-description ul {
+
+    list-style-type: disc;
+    padding-left: 230px;
+    padding-top: 40px;
+    margin: 15px 0 20px;
+    color: #444;
+}
+
+.house-description p {
+    width: 400px;
+    margin-left: 200px;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.house-description li {
+    margin-bottom: 6px;
+    font-size: 20px;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Кнопка */
+.house-description .btn-book {
+    position: absolute;
+    bottom: 0;
+    /* приклеюємо до нижнього краю */
+    right: 0;
+    margin-right: 40px;
+
+    /* в правий кут */
+    padding: 12px 24px;
+    background: #3a2b20;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 2px;
+    transition: background 0.3s;
+}
+
+.house-description .btn-book:hover {
+    background: #5a4030;
+}
+
+
+
+.houses-note {
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    color: #444;
+    margin-top: 60px;
+    /* зверху */
+    margin-bottom: 140px;
+    /* знизу */
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 900px) {
+    .house-content {
+        flex-direction: column;
+    }
+
+    .house-images {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .house-images img {
+        flex: 1;
+    }
+}
