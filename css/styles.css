@@ -1,3 +1,7 @@
+/* =======================================
+   styles.css (ФІНАЛЬНА ВЕРСІЯ 17.0 - Фікс для < 400px)
+======================================= */
+
 /* --------------------
    BASE STYLES
 -------------------- */
@@ -20,6 +24,7 @@ h3 {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     color: #fff;
+    /* У hero білий, поза hero змінюється */
 }
 
 a {
@@ -32,9 +37,9 @@ a:hover {
     opacity: 0.7;
 }
 
-/* --------------------
-   HEADER
--------------------- */
+/* --- Інші базові стилі (header, hero, section-title, таблиця, картки, booking, footer, інші сторінки) --- */
+/* (Код ідентичний попередній версії до медіа-запитів) */
+/* --------------------    HEADER -------------------- */
 header {
     background: transparent;
     position: absolute;
@@ -62,6 +67,11 @@ header {
     color: #fff;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -78,7 +88,7 @@ nav a {
     font-size: 20px;
 }
 
-/* ===== HERO фото ===== */
+/* ===== HERO ===== */
 #hero {
     position: relative;
     width: 100%;
@@ -86,22 +96,29 @@ nav a {
     overflow: hidden;
 }
 
-#hero .hero-media img {
+#hero .hero-media {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    z-index: -1;
+}
+
+#hero .hero-media img {
+    display: block;
+    width: 100%;
+    min-height: 100%;
     object-fit: cover;
 }
 
-/* ===== HERO контент ===== */
 .hero-content {
     position: absolute;
     inset: 0;
     z-index: 2;
     color: #fff;
-    /* увесь текст білий */
 }
 
-/* Заголовок зліва */
 .hero-content h1 {
     position: absolute;
     left: 6%;
@@ -113,10 +130,8 @@ nav a {
     line-height: 1;
     white-space: nowrap;
     color: #fff;
-    /* білий */
 }
 
-/* (FROM 2023) над заголовком праворуч */
 .hero-content .subtitle {
     position: absolute;
     top: calc(40% - 20px);
@@ -127,7 +142,6 @@ nav a {
     color: #fff;
 }
 
-/* Текст зліва внизу */
 .hero-content .lead {
     position: absolute;
     left: 6%;
@@ -141,7 +155,6 @@ nav a {
     color: #fff;
 }
 
-/* Кнопка справа внизу */
 .btn-book {
     position: absolute;
     right: 3%;
@@ -150,7 +163,6 @@ nav a {
     padding: 16px 52px;
     background: #fff;
     color: #111;
-
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
@@ -162,67 +174,63 @@ nav a {
     color: #fff;
 }
 
-/* --------------------
-   ABOUT
--------------------- */
-/* ===== ABOUT SECTION ===== */
+/* --------------------    ABOUT (index.html) -------------------- */
 .section-title {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
     font-family: 'Playfair Display', serif;
-    font-size: clamp(112px, 6vw, 70px);
     font-style: italic;
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1.1;
     color: #2d2119;
     margin: 40px;
     margin-top: 140px;
+    gap: 0 20px;
 }
 
-/* перший рядок */
+.section-title .line1,
+.section-title .line2 {
+    font-size: clamp(70px, 8vw, 112px);
+    white-space: nowrap;
+}
+
 .section-title .line1 {
-    display: inline-block;
+    flex-shrink: 0;
 }
 
-/* обгортка другого рядка */
 .section-title .line2-wrap {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-left: calc(100% - 11.5em);
-    /* підганяєш ширину під слово "місце" */
+    align-items: flex-end;
+    flex-grow: 1;
+    min-width: 50%;
+    position: static;
 }
 
-/* підпис */
 .section-subtitle {
-    position: absolute;
-    right: 120px;
-    /* вирівнюється по кінцю другого рядка */
-
-    /* над словом */
-    transform: translateY(-8px);
+    position: static;
+    transform: none;
     font-family: 'Manrope', sans-serif;
+    font-style: normal;
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #7b6454;
+    white-space: nowrap;
+    margin-top: 10px;
+    text-align: right;
+    width: 100%;
 }
 
-/* другий рядок */
-.section-title .line2 {
-    display: inline-block;
-}
-
-/* ===== Таблиця ===== */
 .about-table {
     margin-top: 84px;
     margin-bottom: 140px;
     border-collapse: collapse;
     width: auto;
-    /* не на всю ширину */
-    margin-left: calc(100% - 84em);
-    /* вирівнювання з другим рядком */
+    margin-left: 30%;
+    max-width: 60%;
 }
 
 .about-table tr {
@@ -241,7 +249,6 @@ nav a {
     vertical-align: center;
 }
 
-/* Ліва колонка курсив */
 .about-table td:first-child {
     width: 80px;
     font-family: 'Playfair Display', serif;
@@ -252,35 +259,7 @@ nav a {
     padding-right: 80px;
 }
 
-/* Адаптив */
-@media (max-width: 768px) {
-    .about {
-        padding: 60px 20px;
-    }
-
-    .section-title {
-        font-size: 34px;
-        display: block;
-    }
-
-    .section-title::before,
-    .section-title::after {
-        display: block;
-        content: none;
-    }
-
-    .section-subtitle {
-        position: static;
-        text-align: center;
-        margin-bottom: 20px;
-        display: block;
-    }
-}
-
-/* --------------------
-   HOUSES
--------------------- */
-/* ===== HOUSES SECTION ===== */
+/* --- Інші секції... --- */
 #houses {
     margin: 0 40px;
     background: #fff;
@@ -289,18 +268,28 @@ nav a {
 
 #houses-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(96px, 5vw, 60px);
+    font-size: clamp(60px, 5vw, 96px);
     font-style: italic;
     font-weight: 400;
     margin-bottom: 40px;
     color: #3a2b20;
 }
 
-/* Сітка карток */
 .houses-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 40px;
+}
+
+.house-card {
+    flex: 1 1 30%;
+    min-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.house-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .house-card img {
@@ -325,19 +314,16 @@ nav a {
     line-height: 1.5;
 }
 
-/* ===== PAGINATION ===== */
 .pagination {
     margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 80px;
-    /* відстань між цифрами */
     font-family: 'Manrope', sans-serif;
     color: #2d2119;
 }
 
-/* Загальні стилі для цифр */
 .pagination a {
     text-decoration: none;
     color: #2d2119;
@@ -346,12 +332,10 @@ nav a {
     position: relative;
 }
 
-/* Роздільні лінії */
 .pagination a:not(:last-child)::after {
     content: "";
     position: absolute;
     right: -55px;
-    /* відстань від цифри до лінії */
     top: 50%;
     transform: translateY(-50%);
     width: 30px;
@@ -359,29 +343,11 @@ nav a {
     background: #111;
 }
 
-/* Активна цифра */
 .pagination a.active {
     font-size: 22px;
-    /* більша цифра */
     font-weight: 400;
 }
 
-/* ===== Адаптив ===== */
-@media (max-width: 992px) {
-    .houses-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 600px) {
-    .houses-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* --------------------
-   GALLERY
--------------------- */
 #gallery {
     margin: 40px;
     margin-top: 140px;
@@ -398,13 +364,9 @@ nav a {
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
-
     font-size: 20px;
 }
 
-/* --------------------
-   BOOKING
--------------------- */
 #booking {
     background: #3C3126;
     color: #fff;
@@ -416,8 +378,6 @@ nav a {
     text-align: center;
 }
 
-/* ===== BOOKING SECTION ===== */
-
 #booking-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(36px, 3vw, 32px);
@@ -426,7 +386,6 @@ nav a {
     margin-bottom: 60px;
 }
 
-/* Форма */
 #booking form {
     max-width: 770px;
     margin: 0 auto;
@@ -463,14 +422,11 @@ nav a {
     color: #aaa;
 }
 
-/* Нотатка */
-/* розташування тексту та кнопки в рядок */
 .consent-and-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
     grid-column: 1 / -1;
-    /* щоб тягнулося на всю ширину */
     gap: 20px;
 }
 
@@ -481,7 +437,6 @@ nav a {
     flex: 1;
 }
 
-/* кнопка */
 #booking button {
     background: #fff;
     color: #2d2119;
@@ -494,7 +449,6 @@ nav a {
     cursor: pointer;
     transition: 0.3s;
     flex-shrink: 0;
-    /* не зменшується */
 }
 
 #booking button:hover {
@@ -502,7 +456,6 @@ nav a {
     color: #fff;
 }
 
-/* нижній сірий текст */
 .footer-note {
     grid-column: 1 / -1;
     text-align: center;
@@ -511,21 +464,6 @@ nav a {
     margin-top: 50px;
 }
 
-/* адаптив */
-@media (max-width: 768px) {
-    .consent-and-button {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #booking button {
-        width: 100%;
-    }
-}
-
-/* --------------------
-   FOOTER
--------------------- */
 footer {
     background: #3C3126;
     color: #fff;
@@ -533,7 +471,7 @@ footer {
     font-size: 44px;
 }
 
-p {
+footer p {
     font-size: 16px;
 }
 
@@ -563,8 +501,7 @@ p {
     color: #aaa;
 }
 
-
-/* ===== ABOUT SECTION ===== */
+/* ... (стилі для about.html, territory.html, houses.html) ... */
 .about-section {
     padding: 100px 60px;
     background: #fff;
@@ -572,10 +509,9 @@ p {
     position: relative;
 }
 
-/* Заголовок */
 .about-section h2 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(96px, 5vw, 60px);
+    font-size: clamp(60px, 4vw, 42px);
     font-style: italic;
     font-weight: 400;
     color: #3a2b20;
@@ -583,7 +519,6 @@ p {
     position: relative;
 }
 
-/* Маленький підпис справа */
 .about-section h2::after {
     content: "(Інформація про нас)";
     font-family: 'Manrope', sans-serif;
@@ -602,12 +537,10 @@ p {
     font-weight: 400;
     margin-bottom: 30px;
     font-size: 36px;
-    /* робимо акцент */
     line-height: 1.3;
     color: #2d2119;
 }
 
-/* Основний текст */
 .about-section p {
     font-family: 'Manrope', sans-serif;
     font-size: 20px;
@@ -616,17 +549,11 @@ p {
     max-width: 800px;
 }
 
-
-/* виділений перший рядок */
-
-
-/* ===== Блоки ===== */
 .about-highlights {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     margin: 40px 0;
-
 }
 
 .highlight-card {
@@ -634,7 +561,6 @@ p {
     color: #fff;
     width: 430px;
     margin: 0 auto;
-
     padding: 30px 20px;
     text-align: center;
 }
@@ -653,33 +579,14 @@ p {
     color: #ddd;
 }
 
-/* Нижній текст */
 .about-section>p:last-of-type {
     text-align: center;
     color: #666;
     margin-top: 40px;
     max-width: 700px;
     margin: 0 auto;
-
 }
 
-/* ===== Адаптив ===== */
-@media (max-width: 992px) {
-    .about-highlights {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .about-section h2::after {
-        position: static;
-        display: block;
-        margin-top: 10px;
-        text-align: right;
-    }
-}
-
-
-/* ===== TERRITORY SECTION ===== */
 .territory {
     padding: 100px 60px;
     background: #fff;
@@ -687,10 +594,9 @@ p {
     position: relative;
 }
 
-/* Заголовок */
 .territory h2 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(96px, 5vw, 60px);
+    font-size: clamp(60px, 4vw, 42px);
     font-style: italic;
     font-weight: 400;
     color: #3a2b20;
@@ -698,7 +604,6 @@ p {
     position: relative;
 }
 
-/* Маленький підпис справа */
 .territory h2::after {
     content: "(Інформація про нас)";
     font-family: 'Manrope', sans-serif;
@@ -712,7 +617,6 @@ p {
     transform: translateY(-50%);
 }
 
-/* Вступні абзаци */
 .territory p {
     font-family: 'Manrope', sans-serif;
     font-size: 20px;
@@ -730,12 +634,9 @@ p {
     margin-bottom: 20px;
 }
 
-/* ===== Таблиця як на минулій секції ===== */
 .territory-table {
     width: 60%;
-    /* не на всю ширину */
     margin: 40px 0 40px auto;
-    /* вирівнюємо праворуч */
     border-collapse: collapse;
 }
 
@@ -762,10 +663,8 @@ p {
     font-size: 36px;
     color: #2d2119;
     padding-right: 40px;
-    /* відступ від другої колонки */
 }
 
-/* ===== Фото ===== */
 .territory-image {
     margin-top: 40px;
     text-align: center;
@@ -782,38 +681,10 @@ p {
     margin: 0 auto;
     font-size: 20px;
     color: #444;
-
 }
 
-/* ===== Адаптив ===== */
-@media (max-width: 768px) {
-    .territory {
-        padding: 60px 20px;
-    }
-
-    .territory h2::after {
-        position: static;
-        display: block;
-        margin-top: 8px;
-        text-align: right;
-    }
-
-    .territory-table {
-        width: 100%;
-        margin: 20px 0;
-    }
-
-    .territory-table td:first-child {
-        width: auto;
-        font-size: 18px;
-        padding-right: 20px;
-    }
-}
-
-/* ===== HOUSES SECTION ===== */
 .houses-section {
     padding-top: 140px;
-
     background: #fff;
     color: #2d2119;
     position: relative;
@@ -849,7 +720,6 @@ p {
     font-weight: 400;
 }
 
-/* Вступний текст */
 .houses-intro {
     font-size: 20px;
     font-weight: 400;
@@ -859,9 +729,7 @@ p {
 
 .houses-features {
     list-style-type: disc;
-    /* крапки */
     padding-left: 30px;
-    /* відступ для маркерів */
     margin-bottom: 50px;
     color: #444;
 }
@@ -873,7 +741,6 @@ p {
     line-height: 1.6;
 }
 
-/* ===== HOUSE TYPES ===== */
 .house-type {
     margin-bottom: 60px;
     position: relative;
@@ -882,7 +749,6 @@ p {
 .house-type h3 {
     position: absolute;
     left: 475px;
-    /* зсув на ширину маленького фото */
     top: 0;
     font-family: 'Playfair Display', serif;
     font-size: 22px;
@@ -891,7 +757,6 @@ p {
     margin: 0;
 }
 
-/* ===== HOUSE TYPES ===== */
 .house-content {
     display: flex;
     gap: 40px;
@@ -903,7 +768,6 @@ p {
     display: flex;
     gap: 15px;
     align-items: flex-end;
-    /* тепер друге фото прижме вниз */
 }
 
 .house-images img:first-child {
@@ -920,9 +784,7 @@ p {
     border-radius: 4px;
 }
 
-/* Списки всередині описів будинків */
 .house-description ul {
-
     list-style-type: disc;
     padding-left: 230px;
     padding-top: 40px;
@@ -945,15 +807,11 @@ p {
     position: relative;
 }
 
-/* Кнопка */
 .house-description .btn-book {
     position: absolute;
     bottom: 0;
-    /* приклеюємо до нижнього краю */
     right: 0;
     margin-right: 40px;
-
-    /* в правий кут */
     padding: 12px 24px;
     background: #3a2b20;
     color: #fff;
@@ -969,31 +827,609 @@ p {
     background: #5a4030;
 }
 
-
-
 .houses-note {
     text-align: center;
     font-size: 20px;
     font-style: normal;
     color: #444;
     margin-top: 60px;
-    /* зверху */
     margin-bottom: 140px;
-    /* знизу */
 }
 
-/* ===== Адаптив ===== */
-@media (max-width: 900px) {
+
+/* ========================================================
+   АДАПТИВНІСТЬ ДЛЯ ЛАБОРАТОРНОЇ 3
+======================================================== */
+
+/* --- Стилі для Бургер-меню (ховаємо на десктопі) --- */
+.burger-menu {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    z-index: 1001;
+}
+
+.burger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* === 0. ПРОМІЖНИЙ РОЗМІР (Планшет Ландшафт / Маленький Ноутбук) === */
+@media (max-width: 1200px) {
+    #hero {
+        height: auto;
+        min-height: 70vh;
+        padding: 150px 20px 50px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+
+    #hero .hero-media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+    }
+
+    #hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: -1;
+    }
+
+    .hero-content {
+        position: static;
+    }
+
+    .hero-content h1,
+    .hero-content .subtitle,
+    .hero-content .lead,
+    #hero .btn-book {
+        position: static;
+        transform: none;
+        white-space: normal;
+        text-align: center;
+        left: auto;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(80px, 12vw, 120px);
+        line-height: 1.1;
+    }
+
+    .hero-content .subtitle {
+        display: none;
+    }
+
+    .hero-content .lead {
+        font-size: 18px;
+        margin-top: 20px;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #hero .btn-book {
+        margin-top: 30px;
+        padding: 16px 40px;
+        font-size: 18px;
+    }
+
+    .section-title {
+        margin: 100px 20px 40px 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 0 10px;
+    }
+
+    .section-title .line1,
+    .section-title .line2 {
+        font-size: clamp(60px, 8vw, 90px);
+        white-space: normal;
+        line-height: 1.1;
+    }
+
+    .section-title .line2-wrap {
+        margin-left: 0;
+        position: static;
+        width: auto;
+        align-items: flex-start;
+    }
+
+    .section-title .line2 {
+        order: 1;
+        white-space: normal;
+    }
+
+    .section-subtitle {
+        position: static;
+        transform: none;
+        font-size: 16px;
+        text-align: left;
+        margin-top: 15px;
+        order: 2;
+        white-space: normal;
+    }
+
+    .about-table {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: auto;
+    }
+
+    #houses,
+    #gallery {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    #booking {
+        width: calc(100% - 40px);
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .about-section,
+    .territory,
+    .houses-section {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+
+/* === 1. ПЛАНШЕТ (Портрет і менше) === */
+@media (max-width: 992px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    main section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .header-contacts {
+        display: none;
+    }
+
+    nav ul.nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #3C3126;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+    }
+
+    nav ul.nav-links.active {
+        transform: translateX(0);
+    }
+
+    nav .nav-links a {
+        font-size: 1.75rem;
+        color: #fff;
+    }
+
+    .burger-menu.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .burger-menu.active span:nth-child(2) {
+        background-color: transparent;
+    }
+
+    .burger-menu.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero-content h1 {
+        font-size: clamp(60px, 18vw, 90px);
+    }
+
+    .section-title {
+        flex-wrap: wrap;
+    }
+
+    .section-title .line1 {
+        font-size: clamp(50px, 8vw, 70px);
+        flex-shrink: 1;
+    }
+
+    .section-title .line2 {
+        font-size: clamp(50px, 8vw, 70px);
+    }
+
+    .about-table {
+        width: 100%;
+        margin: 40px auto 80px auto;
+        padding: 0;
+        margin-left: 0;
+    }
+
+    .about-table td {
+        font-size: 16px;
+        padding: 10px 5px;
+        vertical-align: top;
+    }
+
+    .about-table td:first-child {
+        font-size: 30px;
+        padding-right: 15px;
+        width: 60px;
+    }
+
+    #houses {
+        margin: 0;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    #houses-title {
+        font-size: 60px;
+    }
+
+    .houses-grid {
+        gap: 20px;
+    }
+
+    #gallery {
+        margin: 40px 0 100px 0;
+    }
+
+    #booking {
+        width: 100%;
+        margin: 80px auto;
+        padding: 40px 20px;
+    }
+
+    #booking form {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    #booking input {
+        margin-left: 0;
+    }
+
+    .consent-and-button {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #booking button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .consent-note {
+        text-align: center;
+        margin-left: 0;
+        margin-bottom: 15px;
+    }
+
+    footer {
+        padding: 30px 20px;
+    }
+
+    footer p {
+        font-size: 16px;
+    }
+
+    .footer-contacts a,
+    .footer-social a {
+        font-size: 30px;
+    }
+
+    .about-section {
+        padding: 80px 20px;
+        margin: 0;
+    }
+
+    .about-section h2::after {
+        position: static;
+        display: block;
+        text-align: left;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .highlight-card {
+        width: 100%;
+    }
+
+    .houses-section {
+        margin: 0;
+        padding: 100px 20px 20px 20px;
+    }
+
+    .houses-section h2::after {
+        position: static;
+        display: block;
+        text-align: left;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    .house-type {
+        margin: 0 0 40px 0;
+        padding: 0;
+    }
+
+    .house-type h3 {
+        position: static;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
     .house-content {
         flex-direction: column;
+        margin: 0;
     }
 
     .house-images {
         flex-direction: row;
-        gap: 10px;
+        width: 100%;
     }
 
     .house-images img {
         flex: 1;
+        width: 50%;
+        height: 300px;
+    }
+
+    .house-description p {
+        margin-left: 0;
+        width: 100%;
+        text-align: left;
+        font-size: 18px;
+    }
+
+    .house-description ul {
+        padding-left: 25px;
+        padding-top: 20px;
+    }
+
+    .house-description li {
+        font-size: 18px;
+    }
+
+    .house-description .btn-book {
+        position: static;
+        display: block;
+        text-align: center;
+        margin: 20px 0;
+        padding: 16px 30px;
+        font-size: 16px;
+    }
+
+    .houses-note {
+        margin: 40px 0 80px 0;
+    }
+
+    .territory {
+        padding: 80px 20px;
+        margin: 0;
+    }
+
+    .territory h2::after {
+        position: static;
+        display: block;
+        text-align: left;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    .territory-table {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .territory-table td:first-child {
+        width: auto;
+        font-size: 24px;
+        padding-right: 20px;
+    }
+}
+
+
+/* === 2. ТЕЛЕФОН (і менше) === */
+@media (max-width: 600px) {
+    #hero {
+        min-height: 80vh;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(40px, 12vw, 50px);
+    }
+
+    /* Зменшено h1 */
+    .hero-content .lead {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* Зменшено .lead */
+    #hero .btn-book {
+        width: 80%;
+        text-align: center;
+        padding: 12px 24px;
+        font-size: 14px;
+        margin-top: 25px;
+    }
+
+    /* Зменшено кнопку */
+    #houses-title {
+        font-size: 50px;
+    }
+
+    .section-title {
+        font-size: 32px;
+        margin-top: 60px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .section-title .line1,
+    .section-title .line2 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .section-title .line2-wrap {
+        width: 100%;
+    }
+
+    .section-title .line2 {
+        white-space: normal;
+    }
+
+    .section-subtitle {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+
+    .about-table {
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+
+    .about-table td {
+        padding: 8px 0;
+        font-size: 14px;
+    }
+
+    .about-table td:first-child {
+        font-size: 24px;
+        padding-right: 8px;
+        width: 45px;
+    }
+
+    #gallery {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    .gallery-footer {
+        font-size: 14px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #booking {
+        width: 100%;
+        padding: 30px 10px;
+        margin-bottom: 60px;
+    }
+
+    #booking-title {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+
+    #booking button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    footer a {
+        font-size: 20px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .house-images {
+        flex-direction: column;
+    }
+
+    .house-images img {
+        width: 100%;
+        height: 250px;
+    }
+
+    .territory-table td {
+        flex-direction: column;
+        display: block;
+        font-size: 16px;
+    }
+
+    .territory-table td:first-child {
+        font-size: 18px;
+        padding-right: 0;
+        padding-bottom: 5px;
+    }
+}
+
+/* === 3. ДУЖЕ МАЛЕНЬКИЙ ТЕЛЕФОН (< 400px) === */
+@media (max-width: 400px) {
+    .hero-content h1 {
+        font-size: clamp(32px, 10vw, 40px);
+        /* Ще зменшуємо h1 */
+        line-height: 1.2;
+    }
+
+    .hero-content .lead {
+        font-size: 12px;
+        /* Ще зменшуємо .lead */
+        margin-top: 15px;
+    }
+
+    #hero .btn-book {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    /* Зменшуємо заголовок "Тихе місце" */
+    .section-title .line1,
+    .section-title .line2 {
+        font-size: 28px;
     }
 }

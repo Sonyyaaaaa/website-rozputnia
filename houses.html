@@ -13,17 +13,21 @@
 
 <body>
 
-    <!-- HEADER -->
     <header role="banner">
         <div class="topbar">
-            <!-- Лого -->
             <div class="logo">
                 <a href="/">The Forest Haven</a>
             </div>
 
-            <!-- Навігація -->
             <nav aria-label="Головна навігація">
-                <ul>
+
+                <button class="burger-menu" aria-label="Відкрити/закрити меню" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links">
                     <li><a href="index.html">Головна</a></li>
                     <li><a href="about.html">Про нас</a></li>
                     <li><a href="houses.html">Будинки</a></li>
@@ -31,19 +35,15 @@
                 </ul>
             </nav>
 
-            <!-- Контакт у шапці -->
             <div class="header-contacts">
                 <a href="tel:+380343426292">+38 (034) 342 62 92</a>
             </div>
         </div>
     </header>
 
-    <!-- MAIN -->
     <main id="home">
 
-        <!-- HERO / ВЕРХНІЙ БЛОК -->
         <section id="hero" aria-label="Головний банер">
-            <!-- фонова картинка — додайте через CSS або вставте <img> -->
             <div class="hero-media">
                 <img src="img/Group 1.jpg" alt="Два сучасні котеджі в лісі біля водойми" />
             </div>
@@ -59,7 +59,6 @@
             </div>
         </section>
 
-        <!-- HOUSES INTRO -->
         <section aria-labelledby="houses-title" class="houses-section">
             <h2 id="houses-title">Будинки</h2>
 
@@ -76,7 +75,6 @@
             </ul>
         </section>
 
-        <!-- HOUSE TYPES -->
         <section class="house-type" aria-labelledby="pine-house-title">
             <h3 id="pine-house-title">Pine House</h3>
             <div class="house-content">
@@ -146,7 +144,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer id="contacts" role="contentinfo">
         <div class="footer-top">
             <div class="footer-contacts">
@@ -169,6 +166,8 @@
             <p>© 2025 The Forest Haven. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="main.js"></script>
 
 </body>
 

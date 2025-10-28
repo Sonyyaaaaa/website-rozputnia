@@ -14,17 +14,21 @@
 
 <body>
 
-    <!-- HEADER -->
     <header role="banner">
         <div class="topbar">
-            <!-- Лого -->
             <div class="logo">
                 <a href="/">The Forest Haven</a>
             </div>
 
-            <!-- Навігація -->
             <nav aria-label="Головна навігація">
-                <ul>
+
+                <button class="burger-menu" aria-label="Відкрити/закрити меню" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links">
                     <li><a href="index.html">Головна</a></li>
                     <li><a href="about.html">Про нас</a></li>
                     <li><a href="houses.html">Будинки</a></li>
@@ -32,19 +36,15 @@
                 </ul>
             </nav>
 
-            <!-- Контакт у шапці -->
             <div class="header-contacts">
                 <a href="tel:+380343426292">+38 (034) 342 62 92</a>
             </div>
         </div>
     </header>
 
-    <!-- MAIN -->
     <main id="home">
 
-        <!-- HERO / ВЕРХНІЙ БЛОК -->
         <section id="hero" aria-label="Головний банер">
-            <!-- фонова картинка — додайте через CSS або вставте <img> -->
             <div class="hero-media">
                 <img src="img/Group 1.jpg" alt="Два сучасні котеджі в лісі біля водойми" />
             </div>
@@ -61,7 +61,6 @@
             </div>
         </section>
 
-        <!-- ABOUT / "Тихе місце для перезавантаження" -->
         <section class="about">
             <div class="container">
                 <h2 class="section-title">
@@ -71,10 +70,6 @@
                         <span class="line2">для перезавантаження</span>
                     </span>
                 </h2>
-
-
-
-
 
                 <table class="about-table">
                     <tr>
@@ -99,19 +94,16 @@
             </div>
         </section>
 
-        <!-- HOUSES / Будинки -->
         <section id="houses" aria-labelledby="houses-title">
             <h2 id="houses-title">Будинки</h2>
 
             <div class="houses-grid" role="list">
-                <!-- Картка 1 -->
                 <article class="house-card" role="listitem">
                     <img src="img/white-red-house-surrounded-by-trees-night 2 1.jpg" alt="Будинок з виходом до озера" />
                     <h3>Будинок з виходом до озера</h3>
                     <p>Будинок з виходом до озера. 10 кімнат.</p>
                 </article>
 
-                <!-- Картка 2 -->
                 <article class="house-card" role="listitem">
                     <img src="img/rustic-patio-furniture-house-deck-with-vegetation 1 1.jpg"
                         alt="Будинок з каміном та двориком" />
@@ -119,7 +111,6 @@
                     <p>Великий будинок з каміном на вулиці — 6 кімнат. Чудово підходить для компаній.</p>
                 </article>
 
-                <!-- Картка 3 -->
                 <article class="house-card" role="listitem">
                     <img src="img/photorealistic_house_with_wooden_architecture_timber_structure_1 1.jpg"
                         alt="Котедж на двох" />
@@ -128,7 +119,6 @@
                 </article>
             </div>
 
-            <!-- Пагінація  -->
             <div class="pagination" aria-label="Навігація по сторінкам будинків">
                 <a href="#houses?page=1">1</a>
                 <a href="#houses?page=2" class="active">2</a>
@@ -136,7 +126,6 @@
             </div>
         </section>
 
-        <!-- GALLERY / Широкий банер -->
         <section id="gallery" aria-label="Фотографії території">
             <div class="wide-photo">
                 <img src="img/long-shot-mother-daughter-running-outdoors 1 1.jpg"
@@ -148,7 +137,6 @@
             </div>
         </section>
 
-        <!-- BOOKING / Форма бронювання -->
         <section id="booking" aria-labelledby="booking-title">
             <h2 id="booking-title">Заплануй свою подорож <br> вже сьогодні!</h2>
 
@@ -163,7 +151,6 @@
                     <input id="email" name="email" type="email" required />
                 </div>
 
-                <!-- новий flex-блок -->
                 <div class="consent-and-button">
                     <p class="consent-note">Натискаючи на кнопку, я погоджуюсь з <br> обробкою персональних даних</p>
                     <button type="submit">ЗАБРОНЮВАТИ</button>
@@ -176,7 +163,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer id="contacts" role="contentinfo">
         <div class="footer-top">
             <div class="footer-contacts">
@@ -200,7 +186,7 @@
         </div>
     </footer>
 
-
+    <script src="main.js"></script>
 </body>
 
 </html>
